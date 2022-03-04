@@ -12,7 +12,7 @@ const initialState = {
 } as UsersState
 
  export const registerAsync = createAsyncThunk(
-    'auth/login',
+    'register/register',
     // if you type your function argument here
     async (input:InputRegister) => {
 
@@ -21,7 +21,7 @@ const initialState = {
   )
 
 const register = createSlice({
-  name: "auth",
+  name: "register",
   initialState,
   reducers: {
 

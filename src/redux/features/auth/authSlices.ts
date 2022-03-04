@@ -3,11 +3,12 @@ import { LoginApi } from "../../../ultils/api";
 
 type UsersState = {
   token?: string
-  loading: 'idle' | 'pending' | 'succeeded' | 'failed'
+  loading: 'idle' | 'pending' | 'succeeded' | 'failed',
+  errorMessage?:string
 }
 const initialState = {
   loading:'idle',
-  token:undefined
+  token:undefined ,
 } as UsersState
 
  export const loginAsync = createAsyncThunk(
@@ -40,6 +41,8 @@ const authSlice = createSlice({
       })
       .
       addCase(loginAsync.fulfilled , (state , action) =>{
+        console.log('loginAsync fulfilled' , action.payload);
+        
         if(action.payload.status === true)
           state = {...state , 
             loading:"succeeded" , 
@@ -49,7 +52,8 @@ const authSlice = createSlice({
           state = {
             ...state,
             loading:"failed",
-            token:action.payload.errorMessage
+            token:undefined,
+            errorMessage:action.payload.errorMessage
           }
           return state
       })
