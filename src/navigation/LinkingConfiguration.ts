@@ -13,7 +13,10 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
-      Root: {
+      WelCome:'WelCome',
+      Login:'Login',
+      Register:'Register',
+      Main: {
         screens: {
           TabOne: {
             screens: {
