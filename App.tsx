@@ -11,7 +11,8 @@ import TestLogin from "./src/TestScreens/testLogin";
 import LoginScreen from "./src/TestScreens/LoginScreen";
 import RegisterScreen from "./src/TestScreens/RegisterScreen";
 
-import store from "./src/redux/store/store";
+import { PersistGate } from "redux-persist/integration/react";
+import store, { persistor } from "./src/redux/store/store";
 export default function App() {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
@@ -21,10 +22,12 @@ export default function App() {
   } else {
     return (
       <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
         <SafeAreaProvider>
           <Navigation colorScheme={colorScheme} />
           <StatusBar />
         </SafeAreaProvider>
+        </PersistGate>
       </Provider>
     );
   }

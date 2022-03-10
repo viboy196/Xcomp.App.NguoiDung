@@ -44,6 +44,8 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   const auth = useAppSelector((state) => state.auth);
+  console.log("RootNavigator", auth);
+
   return (
     <Stack.Navigator>
       {auth.token === undefined ? (

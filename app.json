@@ -25,7 +25,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "Xcomp.App.Ytemoi"
     },
     "web": {
       "favicon": "./src/assets/images/favicon.png"

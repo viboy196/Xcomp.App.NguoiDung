@@ -1,11 +1,9 @@
 import { InputRegister } from '../../../ultils/api/apiTypes';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RegisterApi } from "../../../ultils/api";
+import { UsersState } from '../auth/authSlices';
 
-type UsersState = {
-  token?: string
-  loading: 'idle' | 'pending' | 'succeeded' | 'failed'
-}
+
 const initialState = {
   loading:'idle',
   token:undefined

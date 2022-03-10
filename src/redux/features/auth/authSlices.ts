@@ -1,7 +1,9 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { persistReducer } from "redux-persist";
 import { LoginApi } from "../../../ultils/api";
 
-type UsersState = {
+export type UsersState = {
   token?: string
   loading: 'idle' | 'pending' | 'succeeded' | 'failed',
   errorMessage?:string
@@ -59,6 +61,12 @@ const authSlice = createSlice({
       })
   }
 });
-export const {logOut } =  authSlice.actions
+export const {logOut } =  authSlice.actions;
 
-export default authSlice.reducer;
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+};
+
+
+export default persistReducer(persistConfig ,authSlice.reducer);
