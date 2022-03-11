@@ -10,7 +10,7 @@ import {
   validateName,
   validatePassword,
   validatePhoneNumber,
-} from "../../ultils/validate";
+} from "../../utils/validate";
 import { validatePathConfig } from "@react-navigation/native";
 import { RootStackScreenProps } from "../../types";
 import { FontAwesome } from "@expo/vector-icons";

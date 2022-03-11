@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { persistReducer } from "redux-persist";
-import { LoginApi } from "../../../ultils/api";
+import { LoginApi } from "../../../utils/api";
 
 export type UsersState = {
   token?: string

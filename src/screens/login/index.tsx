@@ -7,12 +7,12 @@ import { loginAsync } from "../../redux/features/auth/authSlices";
 import { View, Text } from "../../components/Themed";
 import Input from "../../components/item/InputForm";
 import { RootStackScreenProps } from "../../types";
-import { validatePassword, validatePhoneNumber } from "../../ultils/validate";
+import { validatePassword, validatePhoneNumber } from "../../utils/validate";
 
 const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
   const dispatch = useAppDispatch();
-  const [textPhone, setTextPhone] = useState("0988888888");
-  const [textPassword, setTextPassword] = useState("123456");
+  const [textPhone, setTextPhone] = useState("0981481527");
+  const [textPassword, setTextPassword] = useState("1");
   return (
     <View style={styles.container}>
       <View

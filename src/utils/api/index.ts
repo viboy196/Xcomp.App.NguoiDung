@@ -1,7 +1,7 @@
-import axios from "axios";
-import { urlLogin , urlRegister } from "./apiLink";
-import { ExcuteResult, InputRegister } from "./apiTypes";
 
+import axios, { urlLogin , urlRegister } from "./apiLink";
+import { ExcuteResult, InputRegister } from "./apiTypes";
+import { DetailInfo  } from "./Main";
 export const LoginApi = async (input:{phone:string , password:string}):Promise<ExcuteResult> => {
     console.log('urlLogin ', urlLogin);
     const res = await axios.post(
@@ -23,3 +23,4 @@ export const RegisterApi = async (input:InputRegister):Promise<ExcuteResult> => 
     return res.data as ExcuteResult
   }
 
+export {DetailInfo}

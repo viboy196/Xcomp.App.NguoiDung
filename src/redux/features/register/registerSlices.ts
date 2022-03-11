@@ -1,6 +1,6 @@
-import { InputRegister } from '../../../ultils/api/apiTypes';
+import { InputRegister } from '../../../utils/api/apiTypes';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { RegisterApi } from "../../../ultils/api";
+import { RegisterApi } from "../../../utils/api";
 import { UsersState } from '../auth/authSlices';
 
 

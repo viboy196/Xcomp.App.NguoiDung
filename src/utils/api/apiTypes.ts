@@ -11,3 +11,9 @@ export type InputRegister = {
     fullName:string,
     email:string,
 }
+
+export type InfoResult = {
+    id?:string,
+    name?:string,
+    dsNhanVienModel?:[],
+}

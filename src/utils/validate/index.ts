@@ -10,7 +10,7 @@ export function validatePhoneNumber(number:string):boolean {
 
   
   export function validatePassword(name:string):boolean {
-    return name.length > 4
+    return name.length > 0
   }
 
   function ValidateEmail(email:string):Boolean
