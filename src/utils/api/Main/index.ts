@@ -3,7 +3,7 @@ import { ExcuteResult, InfoResult } from "../apiTypes";
 
 
 
-export const DetailInfo = async (token:string):Promise<InfoResult|undefined> => {
+export const DetailInfo = async (token:string):Promise<ExcuteResult> => {
     console.log('urDetailInfo ', urlDetail);
 
     const res = await axios.get(
@@ -15,11 +15,8 @@ export const DetailInfo = async (token:string):Promise<InfoResult|undefined> => 
         },
       }
     );
-    const data:ExcuteResult = res.data;
-    if(data.status){
-      const dt:InfoResult = data.result;
-      console.log('convert data',dt);
-      return dt;
+    if(res.status === 401){
+      return {status:false , errorMessage:'Unauthorized'}
     }
-    return undefined;
+    return res.data
   }
