@@ -1,3 +1,4 @@
+import { urlActivateApp } from './../apiLink';
 import axios, { urlDetail } from "../apiLink";
 import { ExcuteResult, InfoResult } from "../apiTypes";
 
@@ -20,3 +21,29 @@ export const DetailInfo = async (token:string):Promise<ExcuteResult> => {
     }
     return res.data
   }
+
+export const ActivateApp = async (token :string ,tokenNotification:string):Promise<ExcuteResult> => {
+    console.log('urlActivateApp ', urlActivateApp);
+    
+    console.log(tokenNotification, token);
+
+    const config = {
+      headers: {
+        Authorization: `bearer ${token}`,
+        accept: "text/plain",
+      },
+    };
+
+    const bodyParameters = {
+      appToken: tokenNotification
+   };
+    const res = await axios.post(
+      urlActivateApp,
+      bodyParameters,
+      config
+    );
+    console.log('ActivateApp' , res.data);
+    
+    return res.data
+  }
+

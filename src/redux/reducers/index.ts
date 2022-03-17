@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import todoReducer from '../features/todos/todoSlices'
+import notificationReducer from '../features/notification/NotificationSlice'
 import authReducer from '../features/auth/authSlices'
 import registerReducer from '../features/register/registerSlices'
 
@@ -11,5 +11,6 @@ import { persistStore, persistReducer } from 'redux-persist';
 
 export default combineReducers({
     auth: authReducer,
-    register:registerReducer
+    register:registerReducer,
+    notification:notificationReducer
 })

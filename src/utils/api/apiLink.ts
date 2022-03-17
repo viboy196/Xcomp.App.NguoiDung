@@ -8,6 +8,10 @@ export const urlRegister = `/api/NguoiDung/register?v=1.0`
 
 export const urlDetail = `/NguoiDung/Detail?v=1.0`
 
+export const urlActivateApp = `/App/active-app?v=1.0`
+
+
+
 import axios from 'axios';
 axios.defaults.baseURL = host
 export default axios;
