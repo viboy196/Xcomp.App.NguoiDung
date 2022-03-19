@@ -17,3 +17,5 @@ export type InfoResult = {
     name?:string,
     dsNhanVienModel?:[],
 }
+
+export const Unauthorized = 'Unauthorized'

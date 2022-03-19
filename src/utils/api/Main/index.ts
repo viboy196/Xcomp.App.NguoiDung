@@ -1,28 +1,31 @@
-import { urlActivateApp } from './../apiLink';
+import { ExcuteResult, Unauthorized } from './../apiTypes';
+import { urlActivateApp , urlSendNotiSoS } from './../apiLink';
 import axios, { urlDetail } from "../apiLink";
-import { ExcuteResult, InfoResult } from "../apiTypes";
+import { AxiosRequestConfig } from 'axios';
 
 
 
-export const DetailInfo = async (token:string):Promise<ExcuteResult> => {
-    console.log('urDetailInfo ', urlDetail);
+export const DetailInfoNguoiDung = async (token:string , url = urlDetail):Promise<ExcuteResult> => {
+    const tag = 'DetailInfoNguoiDung';
+    console.log(`${tag} url:`, url);
 
-    const res = await axios.get(
-      "http://api.kachiusa.vn/api/NguoiDung/Detail?v=1.0",
-      {
-        headers: {
-          Authorization: `bearer ${token}`,
-          accept: "text/plain",
-        },
-      }
-    );
-    if(res.status === 401){
-      return {status:false , errorMessage:'Unauthorized'}
+    const config:AxiosRequestConfig = {
+      headers: {
+        Authorization: `bearer ${token}`,
+        accept: "text/plain",
+      },
     }
-    return res.data
+      const res = await axios.get(
+        urlDetail,
+        config
+      );
+      console.log(`${tag} data:`, res.data);
+      return res.data as ExcuteResult;
   }
 
-export const ActivateApp = async (token :string ,tokenNotification:string):Promise<ExcuteResult> => {
+
+
+export const ActivateApp = async (tokenNotification :string , token:string):Promise<ExcuteResult> => {
     console.log('urlActivateApp ', urlActivateApp);
     
     console.log(tokenNotification, token);
@@ -46,4 +49,28 @@ export const ActivateApp = async (token :string ,tokenNotification:string):Promi
     
     return res.data
   }
+
+export const SendNotiSoS = async (data: {idTienich:string, token:string }):Promise<ExcuteResult> => {
+  const tag = 'SendNotiSoS';
+  const url = urlSendNotiSoS(data.idTienich)
+  console.log(`${tag} url:`, url);
+
+  const config:AxiosRequestConfig = {
+    headers: {
+      Authorization: `bearer ${data.token}`,
+      accept: "text/plain",
+    },
+  }
+  try {
+    const res = await axios.get(
+      url,
+      config
+    );
+    console.log(`${tag} data:`, res.data);
+    return res.data as ExcuteResult;
+  } catch (error) {
+    return {status:false , errorMessage:Unauthorized}
+  }
+
+}
 

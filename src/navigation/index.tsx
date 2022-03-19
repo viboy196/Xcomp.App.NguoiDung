@@ -83,7 +83,7 @@ function RootNavigator() {
     if (auth.token && notificationData.token) {
       console.log("start active app");
 
-      fetchMyAPI(auth.token, notificationData.token);
+      fetchMyAPI(notificationData.token, auth.token);
     }
   }, [notificationData.token, auth.token]);
 

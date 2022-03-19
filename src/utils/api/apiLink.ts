@@ -10,6 +10,12 @@ export const urlDetail = `/NguoiDung/Detail?v=1.0`
 
 export const urlActivateApp = `/App/active-app?v=1.0`
 
+export const urlSendNotiSoS = (idTienIch:string):string =>{
+    return `Noti/SendNoti-SoS?idti=${idTienIch}&v=1.0` 
+} 
+
+
+
 
 
 import axios from 'axios';

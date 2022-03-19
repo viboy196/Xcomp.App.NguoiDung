@@ -14,58 +14,26 @@ import axios from "axios";
 import ItemFormCongViec from "../../components/item/ItemFormCongViec";
 import { TabBarIcon } from ".";
 import { FontAwesome } from "@expo/vector-icons";
+import TienIch from "../../components/TienIch";
 
 export default function TabOneScreen({
   navigation,
 }: RootTabScreenProps<"TabOne">) {
-  const dispatch = useAppDispatch();
-  const [vehicleData, setVehicleData] = React.useState<any[]>([]);
-
+  const tag = "TabOneScreen";
   const auth = useAppSelector((state) => state.auth);
-  const fetchMyAPI = useCallback(async () => {
-    if (auth.token !== undefined) {
-      let response = await DetailInfo(auth.token);
-      if (
-        response.status === false &&
-        response.errorMessage === "Unauthorized"
-      ) {
-        dispatch(logOut());
-      }
-      if (response.status === true) {
-        const arrCv = response.result.dsNhanVienModel as Array<{}>;
-
-        arrCv.forEach((item) => {
-          console.log(item);
-
-          setVehicleData((old) => [...old, { ...item }]);
-        });
-        console.log("arrCv", vehicleData);
-      }
-    }
-  }, []);
-
+  const [detailUser, setDetailUser] = useState<any>({});
   useEffect(() => {
-    fetchMyAPI();
-  }, [fetchMyAPI]);
-  const getdetail = async () => {
-    const res = await axios.get(
-      "http://api.kachiusa.vn/api/NguoiDung/Detail?v=1.0",
-      {
-        headers: {
-          Authorization: `bearer ${auth.token}`,
-          accept: "text/plain",
-        },
-      }
-    );
-    console.log(res.data);
-  };
-  const renderItem = (item: any) => (
-    <ItemFormCongViec
-      titleCv={item.vaiTro}
-      titleChucvu={item.name}
-      titleToChuc={item.nameToChuc}
-    />
-  );
+    if (auth.token)
+      DetailInfo(auth.token)
+        .then((data) => {
+          setDetailUser(data.result);
+          console.log(`${tag} | detailUser :`, detailUser);
+        })
+        .catch((error) => {
+          console.log(`${tag} | useEffect | error :`, error);
+        });
+  }, [auth.token]);
+
   return (
     <View
       style={{
@@ -86,10 +54,10 @@ export default function TabOneScreen({
         <Text
           style={{
             marginLeft: 20,
-            fontSize: 32,
+            fontSize: 24,
           }}
         >
-          Xcomp
+          {detailUser.name}
         </Text>
         <View
           style={{
@@ -105,10 +73,8 @@ export default function TabOneScreen({
           />
         </TouchableOpacity>
       </View>
-      <FlatList
-        data={vehicleData}
-        renderItem={({ item }) => renderItem(item)}
-      />
+
+      <TienIch />
     </View>
   );
 }
