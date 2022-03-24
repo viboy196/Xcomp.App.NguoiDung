@@ -41,7 +41,7 @@ const Login = () => {
             value={textPhone}
             keyboardType={"numeric"}
             onChangeInput={(text: string) => {
-              console.log(text);
+              
               setTextPhone(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
@@ -54,7 +54,7 @@ const Login = () => {
             title={"Mật khẩu"}
             value={textPassword}
             onChangeInput={(text: string) => {
-              console.log(text);
+              
               setTextPassword(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}

@@ -14,6 +14,7 @@ import {
 import { validatePathConfig } from "@react-navigation/native";
 import { RootStackScreenProps } from "../../types";
 import { FontAwesome } from "@expo/vector-icons";
+import { tintColorLight } from "../../constants/Colors";
 
 const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
   const dispatch = useAppDispatch();
@@ -73,12 +74,12 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
             title={"Họ và tên"}
             value={textFullName}
             onChangeInput={(text: string) => {
-              console.log(text);
+              
               setTextFullName(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
             icon="user"
-            color={"blue"}
+            color={tintColorLight}
             errorMessages={
               validateName(textFullName) ? undefined : "Tên không hợp lệ"
             }
@@ -88,12 +89,12 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
             value={textPhone}
             keyboardType={"numeric"}
             onChangeInput={(text: string) => {
-              console.log(text);
+              
               setTextPhone(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
             icon="phone"
-            color={"blue"}
+            color={tintColorLight}
             errorMessages={
               validatePhoneNumber(textPhone)
                 ? undefined
@@ -105,12 +106,12 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
             title={"Mật khẩu"}
             value={textPassword}
             onChangeInput={(text: string) => {
-              console.log(text);
+              
               setTextPassword(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
             icon="keyboard-o"
-            color={"blue"}
+            color={tintColorLight}
             secureTextEntry={true}
             errorMessages={
               validatePassword(textPassword)
@@ -122,12 +123,12 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
             title={"Nhập lại mật khẩu"}
             value={textPasswordRedo}
             onChangeInput={(text: string) => {
-              console.log(text);
+              
               setTextPasswordRedo(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
             icon="keyboard-o"
-            color={"blue"}
+            color={tintColorLight}
             secureTextEntry={true}
             errorMessages={
               textPasswordRedo === textPassword
@@ -161,7 +162,7 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
                   height: 60,
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor: "blue",
+                  backgroundColor: tintColorLight,
                   borderRadius: 30,
                   marginBottom: 10,
                 }}
@@ -189,7 +190,7 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Text
                   style={{
-                    color: "blue",
+                    color: tintColorLight,
                   }}
                 >
                   đăng nhập
@@ -206,7 +207,7 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "blue",
+    backgroundColor: tintColorLight,
     flexDirection: "column",
   },
   loginForm: {

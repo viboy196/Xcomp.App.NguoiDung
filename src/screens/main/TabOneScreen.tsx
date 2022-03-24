@@ -8,7 +8,7 @@ import EditScreenInfo from "../../components/EditScreenInfo";
 import { Text, View } from "../../components/Themed";
 import { useAppSelector } from "../../redux/store/hooks";
 import { RootTabScreenProps } from "../../types";
-import { DetailInfo } from "../../utils/api";
+import { DetailInfoNguoiDung } from "../../utils/api";
 //import axios, { urlDetail } from "../../utils/api/apiLink";
 import axios from "axios";
 import ItemFormCongViec from "../../components/item/ItemFormCongViec";
@@ -20,17 +20,19 @@ export default function TabOneScreen({
   navigation,
 }: RootTabScreenProps<"TabOne">) {
   const tag = "TabOneScreen";
+  const dispatch = useAppDispatch();
   const auth = useAppSelector((state) => state.auth);
   const [detailUser, setDetailUser] = useState<any>({});
   useEffect(() => {
     if (auth.token)
-      DetailInfo(auth.token)
+      DetailInfoNguoiDung(auth.token)
         .then((data) => {
           setDetailUser(data.result);
           console.log(`${tag} | detailUser :`, detailUser);
         })
         .catch((error) => {
           console.log(`${tag} | useEffect | error :`, error);
+          dispatch(logOut());
         });
   }, [auth.token]);
 
@@ -64,11 +66,15 @@ export default function TabOneScreen({
             flex: 1,
           }}
         ></View>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("QrScan");
+          }}
+        >
           <FontAwesome
-            name={"bars"}
+            name={"qrcode"}
             size={25}
-            color={"blue"}
+            color={"#2f95dc"}
             style={{ marginRight: 15 }}
           />
         </TouchableOpacity>

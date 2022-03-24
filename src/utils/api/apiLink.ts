@@ -9,10 +9,16 @@ export const urlRegister = `/api/NguoiDung/register?v=1.0`
 export const urlDetail = `/NguoiDung/Detail?v=1.0`
 
 export const urlActivateApp = `/App/active-app?v=1.0`
+export const urlGetTienichByNguoidung = `/TienIch/get-list-tienich-by-nguoidung?v=1.0`
+
 
 export const urlSendNotiSoS = (idTienIch:string):string =>{
-    return `Noti/SendNoti-SoS?idti=${idTienIch}&v=1.0` 
+    return `/Noti/SendNoti-SoS?idti=${idTienIch}&v=1.0` 
 } 
+export const urlActivateDeviceByUser = (idDevice:string):string =>{
+    return `/ThietBiIoT/active-device-by-user?id=${idDevice}&v=1.0` 
+} 
+
 
 
 

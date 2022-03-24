@@ -1,40 +1,38 @@
-import { ExcuteResult } from './../../../utils/api/apiTypes';
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { SendNotiSoS } from "../../../utils/api/Main";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
+type TienIchs = {
+    dsTienIch?:Array<any>
+}
 const initialState = {
-  status:false
-} as ExcuteResult
 
- export const SendNotiSoSAsync = createAsyncThunk(
-    'tienich/SendNotiSoS',
-    // if you type your function argument here
-    async (input:{idTienIch:string , token:string}) => {
-
-      return await SendNotiSoS({idTienich:input.idTienIch , token:input.token})
-    }
-  )
+} as TienIchs
 
 const tienIchSlice = createSlice({
   name: "tienich",
   initialState,
   reducers: {
-  },
-  extraReducers: (builder) => {
-      builder.
-      addCase(SendNotiSoSAsync.pending , (state) =>{
-        state = {...state}
+    addTienIch(state, action: PayloadAction<{tienIch:any}>){
+       
+        state = {
+            ...state,
+            dsTienIch:state.dsTienIch ? [...state.dsTienIch , action.payload.tienIch]:[ action.payload.tienIch]
+        }
         return state
-      })
-      .
-      addCase(SendNotiSoSAsync.fulfilled , (state , action) =>{
-        console.log('SendNotiSoSAsync fulfilled' , action.payload);
-          return action.payload
-      })
-  }
+      },
+      setTienIch(state , action: PayloadAction<{dsTienIch:Array<any>}>){
+          console.log('setTienIch dsTienIch',setTienIch.length);
+          
+        state = {
+            dsTienIch:[...action.payload.dsTienIch]
+        }
+        return state
+      }
+  },
+
 });
 
+export const {  setTienIch } =  tienIchSlice.actions
 
 
 export default tienIchSlice.reducer;

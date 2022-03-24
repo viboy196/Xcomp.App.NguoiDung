@@ -23,4 +23,4 @@ export const RegisterApi = async (input:InputRegister):Promise<ExcuteResult> => 
     return res.data as ExcuteResult
   }
 
-export {DetailInfoNguoiDung as DetailInfo}
+export {DetailInfoNguoiDung}

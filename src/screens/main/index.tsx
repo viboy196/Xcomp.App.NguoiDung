@@ -7,6 +7,7 @@ import useColorScheme from "../../hooks/useColorScheme";
 import { RootTabParamList, RootTabScreenProps } from "../../types";
 import TabOneScreen from "./TabOneScreen";
 import TabTwoScreen from "./TabTwoScreen";
+import TabThreeScreen from "./TabThreeScreen";
 
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
@@ -33,7 +34,7 @@ export default function MainScreen() {
           tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate("Modal")}
+              onPress={() => navigation.navigate("QrScan")}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
@@ -51,6 +52,16 @@ export default function MainScreen() {
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoScreen}
+        options={{
+          title: "Thông báo",
+          headerShown: false,
+          tabBarIcon: ({ color }) => <TabBarIcon name="bell" color={color} />,
+        }}
+      />
+
+      <BottomTab.Screen
+        name="TabThree"
+        component={TabThreeScreen}
         options={{
           title: "Tùy chọn",
           headerShown: false,

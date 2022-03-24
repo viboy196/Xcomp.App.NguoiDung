@@ -3,7 +3,9 @@ import { combineReducers } from 'redux'
 import notificationReducer from '../features/notification/NotificationSlice'
 import authReducer from '../features/auth/authSlices'
 import registerReducer from '../features/register/registerSlices'
-import tienIchReducer from '../features/tienich/tienichSlice'
+import tienichReducer from '../features/tienich/tienichSlice'
+
+// import tienIchReducer from '../features/tienich/tienichSlice'
 
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -15,5 +17,5 @@ export default combineReducers({
     auth: authReducer,
     register:registerReducer,
     notification:notificationReducer,
-    tienich:tienIchReducer,
+    tienich:tienichReducer
 })

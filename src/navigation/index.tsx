@@ -12,7 +12,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import { ColorSchemeName, Platform } from "react-native";
 
-import ModalScreen from "../screens/ModalScreen";
+import QrScanScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import { RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
@@ -66,11 +66,9 @@ function RootNavigator() {
   const notificationData = useAppSelector((state) => state.notification);
   const [state, setState] = React.useState(null);
 
-  console.log("notificationData", notificationData.token);
 
   const fetchMyAPI = React.useCallback(
     async (notiToken: string, token: string) => {
-      console.log("notification activeApp");
 
       const res = await ActivateApp(notiToken, token);
       if (res.status) {
@@ -116,9 +114,12 @@ function RootNavigator() {
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
       />
-      <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
+
+      <Stack.Screen
+        name="QrScan"
+        component={QrScanScreen}
+        options={{ headerShown: false }}
+      />
     </Stack.Navigator>
   );
 }

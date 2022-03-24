@@ -53,7 +53,7 @@ const Register = () => {
             title={"Họ và tên"}
             value={textFullName}
             onChangeInput={(text: string) => {
-              console.log(text);
+              
               setTextFullName(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
@@ -68,7 +68,7 @@ const Register = () => {
             value={textPhone}
             keyboardType={"numeric"}
             onChangeInput={(text: string) => {
-              console.log(text);
+              
               setTextPhone(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
@@ -85,7 +85,7 @@ const Register = () => {
             title={"Mật khẩu"}
             value={textPassword}
             onChangeInput={(text: string) => {
-              console.log(text);
+              
               setTextPassword(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
@@ -102,7 +102,7 @@ const Register = () => {
             title={"Nhập lại mật khẩu"}
             value={textPasswordRedo}
             onChangeInput={(text: string) => {
-              console.log(text);
+              
               setTextPasswordRedo(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}

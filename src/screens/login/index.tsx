@@ -8,6 +8,7 @@ import { View, Text } from "../../components/Themed";
 import Input from "../../components/item/InputForm";
 import { RootStackScreenProps } from "../../types";
 import { validatePassword, validatePhoneNumber } from "../../utils/validate";
+import { tintColorLight } from "../../constants/Colors";
 
 const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
   const dispatch = useAppDispatch();
@@ -48,7 +49,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
             icon="phone"
-            color={"blue"}
+            color={tintColorLight}
             errorMessages={
               validatePhoneNumber(textPhone)
                 ? undefined
@@ -65,7 +66,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
             icon="keyboard-o"
-            color={"blue"}
+            color={tintColorLight}
             secureTextEntry={true}
             errorMessages={
               validatePassword(textPassword) ? undefined : "mật khẩu quá ngắn"
@@ -80,7 +81,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
           >
             <View style={{ flex: 1, backgroundColor: "#ecf0f1" }}></View>
             <TouchableOpacity>
-              <Text style={{ padding: 10, marginRight: 15, color: "blue" }}>
+              <Text style={{ padding: 10, marginRight: 15, color: tintColorLight }}>
                 Quên Mật khẩu
               </Text>
             </TouchableOpacity>
@@ -105,7 +106,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
                   height: 60,
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor: "blue",
+                  backgroundColor: tintColorLight,
                   borderRadius: 30,
                 }}
               >
@@ -142,7 +143,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
             >
               <Text
                 style={{
-                  color: "blue",
+                  color: tintColorLight,
                 }}
               >
                 Đăng ký ngay
@@ -158,7 +159,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "blue",
+    backgroundColor: tintColorLight,
     flexDirection: "column",
   },
   loginForm: {
