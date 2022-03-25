@@ -105,9 +105,9 @@ export const SendNotiSoS = async (data: {idTienich:string, token:string }):Promi
 
 }
 
-export const ActivateDeviceByUser = async (data: {idDevice:string, token:string }):Promise<ExcuteResult> => {
-  const tag = 'SendNotiSoS';
-  const url = urlActivateDeviceByUser(data.idDevice)
+export const ActivateDeviceByUser = async (data: {idDevice:string,idTienich:string ,  token:string }):Promise<ExcuteResult> => {
+  const tag = 'ActivateDeviceByUser';
+  const url = urlActivateDeviceByUser({idDevice: data.idDevice ,idtienich: data.idTienich})
   console.log(`${tag} url:`, url);
 
   const config:AxiosRequestConfig = {

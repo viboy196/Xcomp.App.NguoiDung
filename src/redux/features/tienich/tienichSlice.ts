@@ -2,10 +2,10 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 
 type TienIchs = {
-    dsTienIch?:Array<any>
+    dsTienIch:Array<any>
 }
 const initialState = {
-
+  dsTienIch:[]
 } as TienIchs
 
 const tienIchSlice = createSlice({

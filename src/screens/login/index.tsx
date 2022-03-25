@@ -9,6 +9,7 @@ import Input from "../../components/item/InputForm";
 import { RootStackScreenProps } from "../../types";
 import { validatePassword, validatePhoneNumber } from "../../utils/validate";
 import { tintColorLight } from "../../constants/Colors";
+import { AppName } from "../../utils/AppType";
 
 const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
   const dispatch = useAppDispatch();
@@ -31,7 +32,7 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
             fontWeight: "700",
           }}
         >
-          Y TẾ MỚI
+          {AppName}
         </Text>
       </View>
       <View style={styles.loginForm}>
@@ -81,7 +82,9 @@ const Login = ({ navigation }: RootStackScreenProps<"Login">) => {
           >
             <View style={{ flex: 1, backgroundColor: "#ecf0f1" }}></View>
             <TouchableOpacity>
-              <Text style={{ padding: 10, marginRight: 15, color: tintColorLight }}>
+              <Text
+                style={{ padding: 10, marginRight: 15, color: tintColorLight }}
+              >
                 Quên Mật khẩu
               </Text>
             </TouchableOpacity>

@@ -15,8 +15,8 @@ export const urlGetTienichByNguoidung = `/TienIch/get-list-tienich-by-nguoidung?
 export const urlSendNotiSoS = (idTienIch:string):string =>{
     return `/Noti/SendNoti-SoS?idti=${idTienIch}&v=1.0` 
 } 
-export const urlActivateDeviceByUser = (idDevice:string):string =>{
-    return `/ThietBiIoT/active-device-by-user?id=${idDevice}&v=1.0` 
+export const urlActivateDeviceByUser = (data: {idDevice:string , idtienich:string}):string =>{
+    return `/ThietBiIoT/active-device-by-user?idDevice=${data.idDevice}&idti=${data.idtienich}&v=1.0` 
 } 
 
 

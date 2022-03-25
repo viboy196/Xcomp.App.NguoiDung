@@ -16,8 +16,6 @@ const ItemTienIch = (props: Props) => {
   const { ItemTienIch } = props;
   const data = ItemTienIch;
 
-
-
   console.log("loaiTienIch", data.loaiTienIch);
   const auth = useAppSelector((state) => state.auth);
   // const sendNoti = useCallback(() => {
@@ -75,7 +73,7 @@ const ItemTienIch = (props: Props) => {
               console.log("QrLayout", qrLayOut);
             }}
           >
-            <View style={{ flex: 1, padding: 15, backgroundColor: "red" }}>
+            <View style={{ flex: 1, padding: 15 }}>
               <Text>{data.tenNguoiDung}</Text>
               <Text>Vai trò {data.vaiTroNGuoiDung}</Text>
 
@@ -88,7 +86,6 @@ const ItemTienIch = (props: Props) => {
               justifyContent: "center",
               marginRight: 10,
               flex: 1,
-              backgroundColor: "blue",
             }}
           >
             <TouchableOpacity onPress={sendNoti}>

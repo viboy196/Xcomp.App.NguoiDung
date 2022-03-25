@@ -1,25 +1,15 @@
-import { StatusBar } from "expo-status-bar";
-import {
-  Button,
-  Platform,
-  StyleSheet,
-  TouchableOpacity,
-  TouchableOpacityBase,
-  Modal,
-  Pressable,
-} from "react-native";
+import { TouchableOpacity } from "react-native";
 import { Text, View } from "../components/Themed";
 
 import { BarCodeScanner } from "expo-barcode-scanner";
 import React, { useCallback, useEffect, useState } from "react";
-import { Alert } from "react-native";
 import { ActivateDeviceByUser } from "../utils/api/Main";
 import { useAppSelector } from "../redux/store/hooks";
 import { RootStackScreenProps } from "../types";
 import { FontAwesome } from "@expo/vector-icons";
-import ModalActivateDevice from "../components/ModalActivedevice";
-type IdThietBi = {
+export type ThietBiType = {
   idThietBi: string;
+  DeviceName: string;
 };
 export default function QrScanScreen({
   navigation,
@@ -35,36 +25,14 @@ export default function QrScanScreen({
       setHasPermission(status === "granted");
     })();
   }, []);
-  const activateDevice = useCallback((idDevice: string, idTienIch) => {
-    const activateDevice = async (idDevice: string, token: string) => {
-      var res = await ActivateDeviceByUser({ idDevice, token });
-      if (res.status) navigation.goBack();
-    };
-    if (auth.token) {
-      activateDevice(idDevice, auth.token);
-    }
-  }, []);
+
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    const thietbi = JSON.parse(data) as IdThietBi;
+    const thietbi = JSON.parse(data) as ThietBiType;
     console.log(thietbi);
-    if (thietbi.idThietBi)
-      Alert.alert(
-        "kích hoạt",
-        `Bạn muốn kích hoạt thiết bị ${thietbi.idThietBi} ?`,
-        [
-          {
-            text: "không",
-            onPress: () => console.log("Cancel Pressed"),
-          },
-          {
-            text: "OK",
-            onPress: () => {
-              console.log("vào kích hoạt thiết bị");
-            },
-          },
-        ]
-      );
+    if (thietbi.idThietBi) {
+      navigation.navigate("ActiveDevice", { thietbi });
+    }
   };
 
   if (hasPermission === null) {
@@ -81,11 +49,6 @@ export default function QrScanScreen({
         justifyContent: "center",
       }}
     >
-      <ModalActivateDevice
-        idThietbi={idThietbi}
-        onActiveDevice={activateDevice}
-        visible={true}
-      />
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={{

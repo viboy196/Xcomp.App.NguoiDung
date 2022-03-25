@@ -9,6 +9,7 @@ import {
   NavigatorScreenParams,
 } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { ThietBiType } from "./screens/QrScanScreen";
 
 declare global {
   namespace ReactNavigation {
@@ -23,6 +24,7 @@ export type RootStackParamList = {
   Main: NavigatorScreenParams<RootTabParamList> | undefined;
   QrScan: undefined;
   NotFound: undefined;
+  ActiveDevice: { thietbi:ThietBiType };
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
@@ -31,7 +33,7 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
 export type RootTabParamList = {
   TabOne: undefined;
   TabTwo: undefined;
-  TabThree:undefined;
+  TabThree: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

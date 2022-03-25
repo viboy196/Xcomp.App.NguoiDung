@@ -15,6 +15,7 @@ import { validatePathConfig } from "@react-navigation/native";
 import { RootStackScreenProps } from "../../types";
 import { FontAwesome } from "@expo/vector-icons";
 import { tintColorLight } from "../../constants/Colors";
+import { AppName } from "../../utils/AppType";
 
 const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
   const dispatch = useAppDispatch();
@@ -62,7 +63,7 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
             fontWeight: "700",
           }}
         >
-          Y TẾ MỚI
+          {AppName}
         </Text>
       </View>
       <View style={styles.loginForm}>
@@ -74,7 +75,6 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
             title={"Họ và tên"}
             value={textFullName}
             onChangeInput={(text: string) => {
-              
               setTextFullName(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
@@ -89,7 +89,6 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
             value={textPhone}
             keyboardType={"numeric"}
             onChangeInput={(text: string) => {
-              
               setTextPhone(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
@@ -106,7 +105,6 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
             title={"Mật khẩu"}
             value={textPassword}
             onChangeInput={(text: string) => {
-              
               setTextPassword(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}
@@ -123,7 +121,6 @@ const Register = ({ navigation }: RootStackScreenProps<"Register">) => {
             title={"Nhập lại mật khẩu"}
             value={textPasswordRedo}
             onChangeInput={(text: string) => {
-              
               setTextPasswordRedo(text);
             }}
             style={{ marginLeft: 10, marginRight: 10 }}

@@ -39,6 +39,7 @@ const linking: LinkingOptions<RootStackParamList> = {
       },
       QrScan: 'qrScan',
       NotFound: '*',
+      ActiveDevice:'activeDevice',
     },
   },
 };

@@ -9,6 +9,7 @@ import Navigation from "./src/navigation";
 import TestLogin from "./src/TestScreens/testLogin";
 import LoginScreen from "./src/TestScreens/LoginScreen";
 import RegisterScreen from "./src/TestScreens/RegisterScreen";
+import ActiveDeviceScreen from "./src/screens/ActiveDevice";
 
 import { PersistGate } from "redux-persist/integration/react";
 import store, { persistor } from "./src/redux/store/store";

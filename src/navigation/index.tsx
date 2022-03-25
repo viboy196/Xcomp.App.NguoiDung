@@ -12,13 +12,15 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import { ColorSchemeName, Platform } from "react-native";
 
-import QrScanScreen from "../screens/ModalScreen";
+import QrScanScreen from "../screens/QrScanScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import { RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
 import MainScreen from "../screens/main";
 import LoginScreen from "../screens/login";
 import RegisterScreen from "../screens/register";
+import ActiveDeviceScreen from "../screens/ActiveDevice";
+
 import { useAppDispatch, useAppSelector } from "../redux/store/hooks";
 
 import * as Device from "expo-device";
@@ -66,10 +68,8 @@ function RootNavigator() {
   const notificationData = useAppSelector((state) => state.notification);
   const [state, setState] = React.useState(null);
 
-
   const fetchMyAPI = React.useCallback(
     async (notiToken: string, token: string) => {
-
       const res = await ActivateApp(notiToken, token);
       if (res.status) {
         console.log("ActivateApp suscess");
@@ -118,6 +118,12 @@ function RootNavigator() {
       <Stack.Screen
         name="QrScan"
         component={QrScanScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="ActiveDevice"
+        component={ActiveDeviceScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
